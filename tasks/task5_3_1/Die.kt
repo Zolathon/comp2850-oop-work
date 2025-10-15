@@ -23,7 +23,3 @@ fun rollDie(sides: Int = 6) {
         println("Error: cannot have a $sides-sided die")
     }
 }
-
-fun rollDice(sides: Int = 6, number: Int = 1) {
-    
-}
