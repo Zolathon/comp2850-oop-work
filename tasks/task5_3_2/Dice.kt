@@ -1,7 +1,8 @@
 import kotlin.random.Random
 
 fun main() {
-    rollDie(readInt("Enter number of sides: "))
+    rollDice(readInt("Enter number of sides: "), readInt("Enter number of dice: "))
+    // rollDie(readInt("Enter number of sides: "))
 }
 
 fun readInt(phrase: String) : Int {
@@ -25,5 +26,7 @@ fun rollDie(sides: Int = 6) {
 }
 
 fun rollDice(sides: Int = 6, number: Int = 1) {
-    
+    for (i in 0..number-1) {
+        rollDie(sides)
+    }
 }

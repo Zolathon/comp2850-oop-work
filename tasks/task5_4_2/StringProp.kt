@@ -1,4 +1,3 @@
-// Task 5.4.1: string extension function
 fun main() {
     print("Enter your string: ")
     val string = readln()
