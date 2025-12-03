@@ -6,8 +6,21 @@ val red = "\u001B[31m"
 val green = "\u001B[32m"
 val yellow = "\u001B[33m"
 val colours = arrayOf(red, yellow, green, reset)
+var target = pickRandomWord(readWordList("data/words.txt"))
+
+fun main() {
+    for (i in 1..6) {
+        var guess = obtainGuess(i)
+        var matches = evaluateGuess(guess, target)
+        displayGuess(guess, matches)
+    }
+    
+}
 
 fun isValid(word : String): Boolean {
+    if (word == "help!") {
+        return true
+    }
     if (word.length != 5) {
         return false
     }
@@ -24,13 +37,19 @@ fun readWordList(filename: String): MutableList<String> {
 }
 
 fun pickRandomWord(words: MutableList<String>): String {
-    return words[Random.nextInt(0, words.size)].lowercase()
+    return words[Random.nextInt(0, words.size)].toLowerCase()
 }
 
 fun obtainGuess(attempt: Int): String {
     while (true) {
         print("Attempt $attempt: ")
-        val guess = readLine()!!.lowercase()
+        val guess = readLine()!!.toLowerCase()
+
+        if (guess == "help!") {
+            println("Target word: $target")
+            continue
+        }
+
         if (isValid(guess)) return guess
         println("Try Again, enter a 5 letter word")
     }
